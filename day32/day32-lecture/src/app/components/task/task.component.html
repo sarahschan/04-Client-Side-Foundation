@@ -1,0 +1,115 @@
+<h2>Todo Task:</h2>
+
+
+<!-- <ul>
+    <li>Form Valid: {{form.valid}}</li>
+        <ul>
+            <li>taskName valid: {{form.get('taskName')?.valid}}</li>
+            <li>dueDate valid: {{form.get('dueDate')?.valid}}</li>
+        </ul>
+    <li>Form Invalid: {{form.invalid}}</li>
+</ul> -->
+    
+
+<!-- bind to the form model, listen to the submit button -->
+<form [formGroup]="form" (submit)="processForm()">  
+
+    <table>
+
+        <tr>
+            <td>Task Name:</td>
+            <td>
+                <input formControlName="taskName" type="text" 
+                    [ngClass]="{ 'valid': form.get('taskName')?.valid, 'invalid': form.get('taskName')?.invalid}">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Priority:</td>
+            <td>
+                <select formControlName="priority">
+                    <option value="0">Low</option>
+                    <option value="1">Medium</option>
+                    <option value="2">High</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Due Date:</td>
+            <td>
+                <input formControlName="dueDate" type="date"
+                    [ngClass]="{ 'valid': isFieldValid('dueDate'), 'invalid': isFieldInvalid('dueDate')}">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Urgency:</td>
+            <td>
+                <input formControlName="urgency" type="range" min="1" max="5" (change)="updateUrgency($event)"> ({{urgency}})
+            </td>
+        </tr>
+
+        <tr>
+            <td>Comments:</td>
+            <td>
+                <textarea formControlName="comments" rows="4" cols="30"></textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Procrastinate:</td>
+            <td>
+                <input formControlName="procrastinate" type="checkbox">
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit" [disabled]="checkFormInvalid()">Add</button>
+                &nbsp;
+                <button type="button" (click)="addCollaborator()">Add Collaborator</button>
+            </td>
+        </tr>
+
+    </table>
+
+
+    <h3>Collaborators</h3>
+
+    @if (collaborators.controls.length > 0) {
+        <table>
+            <thead>
+                <th></th>
+                <th>Name</th>
+                <th>Email</th>
+            </thead>
+    
+            <!-- this is the part to repeat, hence this is the element of the array -->
+            <tbody formArrayName="collaborators">
+    
+                @for (col of collaborators.controls; let idx = $index; track col) {
+                    <tr [formGroupName]="idx">
+                        <td>{{idx + 1}}</td>
+                        <td>
+                            <input formControlName="name" type="text">
+                        </td>
+                        <td>
+                            <input formControlName="email" type="text">
+                        </td>
+                        <td>
+                            <button type="button" (click)="removeCollaborator(idx)">X</button>
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+            
+        </table>
+
+    } @else {
+        <h4>Get Help!</h4>
+    }
+    
+</form>

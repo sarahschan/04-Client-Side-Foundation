@@ -1,0 +1,10 @@
+.display {
+    display: flex;          /* Enables flexbox */
+    flex-direction: column; /* Keeps items stacked vertically */
+    align-items: center;    /* Centers everything horizontally */
+    text-align: center;     /* Centers text inside elements */
+}
+
+h1 {
+    font-size: 4.5em;
+}

@@ -1,0 +1,44 @@
+<div class="display">
+
+  <h1> {{ title | titlecase }} </h1>
+
+
+  <app-display [imagePath] = "imagePath"></app-display>
+    <!-- [imagePath] refers to the input property of display component -->
+    <!-- "imagePath" refers to variable in AppComponent -->
+    <!-- Whatever value is stored in imagePath inside AppComponent gets sent to DisplayComponent as an input property (hence @Input) -->
+  
+  
+  <app-navigation (onNavigate)="whenNavigate($event)"></app-navigation>
+    <!-- (onNavigate) listens for the event emitted by navigation.component -->
+    <!-- whenNavigate($event) calls the whenNavigate method in app.component and passes $event, which contains PageEvent {delta, step} -->
+
+</div>
+
+
+<!--  
+    Final flow of parent-child communication:
+      1. User clicks a button in navigation, triggering handleNav(delta)
+      2. onNavigate.next(pageEvent) emits event to app.component
+      3. app.component listens for the emitted event using (onNavigate)="whenNavigate($event)"
+      4. whenNavigate($event) updates the number and imagePath in app.component
+      5. app.component passes the updated imagePath as an input property to the display component via [imagePath]="imagePath"
+      6. display component recieves imagePath via @Input() and displays the updated image
+-->
+
+
+<!-- 
+    Why the differences between [imagePath] = "imagePath" and (onNavigate)="whenNavigate($event)"
+
+    [imagePath] = "imagePath" (Property Binding)
+      - One-way data binding: parent -> child
+      - Passes data from parent (app.component) to child (app-display)
+      - imagePath is a property of app-display, and it recieves the value of imagePath from app.component
+      - the imagePath variable from app.component is sent as an input to app-display for use in it's html
+
+    (onNavigate) = "whenNavigate($event)" (Event Binding)
+      - One-way data binding: child -> parent
+      - () indicate event binding
+      - Passes data from the child (app-navigation) to parent (app.component) when an event occurs
+      - onNavigate is a custom event emitted by app-navigation, and whenNavigation($event) is the method in app.component that handles is
+-->

@@ -1,0 +1,45 @@
+<h1>{{title}} ({{allClicks}})</h1>
+
+<!-- <app-text text="hello world"></app-text>
+<app-text text="the weekend is near!"></app-text>
+
+<app-text text="{{myText}}"></app-text>
+<app-text [text]="myText"></app-text>
+
+
+@for (t of texts; track $index) {
+    <app-text [text] = "t"></app-text>
+}
+
+@for (t of texts; let idx = $index; track t) {
+    <app-text [text] = "idx + ': ' + t"></app-text>
+} -->
+
+
+
+
+
+<!-- <ol>
+    @for (t of texts; let idx = $index; track t) {
+        <li>
+            <app-text [text] = "t" (totalClicks)="whenTotalClicks($event)"></app-text>
+        </li>
+    }
+</ol> -->
+
+
+
+<app-text-input (onNewText)="whenNewText($event)"></app-text-input>
+
+@if (texts.length > 0) {
+    <ol>
+        @for (t of texts; let idx = $index; track t) {
+            <li>
+                <app-text [text] = "t" (totalClicks)="whenTotalClicks(idx, $event)"></app-text>
+            </li>
+        }
+    </ol>
+
+} @else {
+    <h2>There are no phrases to display</h2>
+}

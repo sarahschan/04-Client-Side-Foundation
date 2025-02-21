@@ -1,0 +1,14 @@
+.navigation {
+    width: 26vw;
+    margin-top: 3vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5vw;
+}
+
+
+.navigation button,
+.navigation select {
+    height: 4vh;
+    font-size: large;
+}
