@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { PurchaseOrderComponent } from './components/purchase_order/purchase-order.component';
+import { PurchaseOrderComponent } from './components/purchase-order/purchase-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

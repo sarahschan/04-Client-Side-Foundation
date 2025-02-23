@@ -1,0 +1,64 @@
+<div>
+
+    <h2>Delivery Details</h2>
+
+    <form [formGroup]="form" (submit)="handleFormSubmission()">
+
+        Values: {{form.value | json}}
+
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input formControlName="name" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>
+                    <input formControlName="address" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>
+                    <input formControlName="email" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Delivery Date:</td>
+                <td>
+                    <input formControlName="deliveryDate" type="date">
+                </td>
+            </tr>
+            <tr>
+                <td>Urgent:</td>
+                <td>
+                    <input formControlName="urgent" type="checkbox">
+                    <label>Check for urgent deliveries</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Delivery Time:</td>
+                <td>
+                    <input formControlName="am" type="checkbox">
+                    <label>0900-1200</label>
+
+                    <input formControlName="pm" type="checkbox">
+                    <label>1200-1600</label>
+
+                    <input formControlName="ev" type="checkbox">
+                    <label>1600-2000</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Submit Order</button>
+                    <button type="button">Add Collaborators</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

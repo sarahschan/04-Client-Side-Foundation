@@ -1,0 +1,65 @@
+<h2>Delivery Details</h2>
+
+
+<form [formGroup]="form" (submit)="processForm()">
+
+    Values: {{form.value | json}}
+
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input formControlName="name" type="text"
+                    [ngClass]="{ 'valid': isFieldValid('name'), 'invalid': isFieldInvalid('name')}">
+            </td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td>
+                <input formControlName="address" type="text"
+                    [ngClass]="{ 'valid': isFieldValid('address'), 'invalid': isFieldInvalid('address')}">
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                <input formControlName="email" type="text"
+                    [ngClass]="{ 'valid': isFieldValid('email'), 'invalid': isFieldInvalid('')}">
+            </td>
+        </tr>
+        <tr>
+            <td>Delivery Date:</td>
+            <td>
+                <input formControlName="deliveryDate" type="date"
+                    [ngClass]="{ 'valid': isFieldValid('deliveryDate'), 'invalid': isFieldInvalid('deliveryDate')}">
+            </td>
+        </tr>
+        <tr>
+            <td>Availability:</td>
+            <td>
+                <input type="checkbox" fromArrayName="availability" value="0900 - 1200" 
+                    (change)="updateAvailability($event)" [disabled]="isUrgent()">&nbsp;<label>0900 - 1200</label><br>
+                <input type="checkbox" fromArrayName="availability" value="1200 - 1600" 
+                    (change)="updateAvailability($event)" [disabled]="isUrgent()">&nbsp;<label>1200 - 1600</label><br>
+                <input type="checkbox" fromArrayName="availability" value="1600 - 2000" (change)="updateAvailability($event)"
+                    [disabled]="isUrgent()">&nbsp;<label>1600 - 2000</label>
+            </td>
+        </tr>
+        <tr>
+            <td>Urgent:</td>
+            <td>
+                <input formControlName="urgent" type="radio" value=true
+                    (change)="handleUrgent()">
+                &nbsp;
+                <button type="button" (click)="resetUrgent()">x</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Send Order</button>
+            </td>
+        </tr>
+    </table>
+</form>
