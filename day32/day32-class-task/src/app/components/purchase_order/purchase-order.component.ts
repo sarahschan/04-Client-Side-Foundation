@@ -1,6 +1,6 @@
 import { state } from '@angular/animations';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { __classPrivateFieldSet, __values } from 'tslib';
 import { PurchaseOrder } from '../../../models';
 
@@ -49,12 +49,9 @@ export class PurchaseOrderComponent implements OnInit {
 
     
     // Validation methods
-    protected isFieldValid(field: string): boolean {    // protected boolean isFieldValid(String field)
-      return !!this.form.get(field)?.valid
-    }
-
-    protected isFieldInvalid(field: string): boolean {
-      return !!this.form.get(field)?.invalid
+    protected fieldError(fieldName: string): boolean {
+      const field = this.form.get(fieldName) as FormControl
+      return field.dirty && field.invalid
     }
 
 

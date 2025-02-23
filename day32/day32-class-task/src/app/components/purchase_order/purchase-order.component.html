@@ -10,44 +10,53 @@
             <tr>
                 <td>Name:</td>
                 <td>
-                    <input formControlName="name" type="text">
+                    <input formControlName="name" type="text"
+                        class="form-control" [ngClass]="{'is-invalid': fieldError('name')}">
                 </td>
             </tr>
             <tr>
                 <td>Address:</td>
                 <td>
-                    <input formControlName="address" type="text">
+                    <input formControlName="address" type="text"
+                        class="form-control" [ngClass]="{'is-invalid': fieldError('address')}">
                 </td>
             </tr>
             <tr>
                 <td>Email:</td>
                 <td>
-                    <input formControlName="email" type="text">
+                    <input formControlName="email" type="text"
+                        class="form-control" [ngClass]="{'is-invalid': fieldError('email')}">
+
                 </td>
             </tr>
             <tr>
                 <td>Delivery Date:</td>
                 <td>
-                    <input formControlName="deliveryDate" type="date">
+                    <input formControlName="deliveryDate" type="date"
+                        class="form-control" [ngClass]="{'is-invalid': fieldError('deliveryDate')}">
                 </td>
             </tr>
             <tr>
                 <td>Urgent:</td>
                 <td>
-                    <input formControlName="urgent" type="checkbox">
+                    <input formControlName="urgent" type="checkbox"
+                        class="form-check-input">
                     <label>Check for urgent deliveries</label>
                 </td>
             </tr>
             <tr>
                 <td>Delivery Time:</td>
                 <td>
-                    <input formControlName="am" type="checkbox">
+                    <input formControlName="am" type="checkbox"
+                        class="form-check-input">
                     <label>0900-1200</label>
 
-                    <input formControlName="pm" type="checkbox">
+                    <input formControlName="pm" type="checkbox"
+                        class="form-check-input">
                     <label>1200-1600</label>
 
-                    <input formControlName="ev" type="checkbox">
+                    <input formControlName="ev" type="checkbox"
+                        class="form-check-input">
                     <label>1600-2000</label>
                 </td>
             </tr>
