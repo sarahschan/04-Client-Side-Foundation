@@ -43,7 +43,7 @@
                 <label class="form-label">Urgent</label>
                 <div class="form-check">
                     <input formControlName="urgent" type="checkbox"
-                        class="form-check-input">
+                        class="form-check-input" (change)="updateUrgency($event)">
                     <label class="form-check-label text-info">
                         Check for urgent deliveries
                     </label>
@@ -51,28 +51,32 @@
             </div>
         </div>
 
-        <div class="row mb-3">
-            <div class="col">
-                <label>Delivery Time</label>
-                <div class="col d-flex gap-3">
-                    <div class="form-check">
-                        <input formControlName="am" type="checkbox"
-                            class="form-check-input">
-                        <label class="form-check-label">0900 - 1200</label>
-                    </div>
-                    <div class="form-check">
-                        <input formControlName="pm" type="checkbox"
-                            class="form-check-input">
-                        <label class="form-check-label">1200 - 1600</label>
-                    </div>
-                    <div class="form-check">
-                        <input formControlName="ev" type="checkbox"
-                            class="form-check-input">
-                        <label class="form-check-label">1600 - 2000</label>
+        @if (showDeliveryTime) {
+            <div class="row mb-3">
+                <div class="col">
+                    <label>Delivery Time</label>
+                    <div class="col d-flex gap-3">
+                        <div class="form-check">
+                            <input formControlName="am" type="checkbox"
+                                class="form-check-input">
+                            <label class="form-check-label">0900 - 1200</label>
+                        </div>
+                        <div class="form-check">
+                            <input formControlName="pm" type="checkbox"
+                                class="form-check-input">
+                            <label class="form-check-label">1200 - 1600</label>
+                        </div>
+                        <div class="form-check">
+                            <input formControlName="ev" type="checkbox"
+                                class="form-check-input">
+                            <label class="form-check-label">1600 - 2000</label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+
+        
 
         <div class="row mb-3">
             <div class="col d-flex gap-3">

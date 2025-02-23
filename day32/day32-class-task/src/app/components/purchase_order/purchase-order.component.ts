@@ -55,6 +55,13 @@ export class PurchaseOrderComponent implements OnInit {
     }
 
 
+    // Show delivery times?
+    protected showDeliveryTime = true
+    protected updateUrgency(event: any){
+      this.showDeliveryTime = !event.target.checked
+    }
+
+
     // Handle form submission method
     protected handleFormSubmission() {
       const newPO: PurchaseOrder = this.form.value
