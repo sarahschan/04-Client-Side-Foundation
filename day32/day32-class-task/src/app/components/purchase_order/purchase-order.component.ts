@@ -62,6 +62,26 @@ export class PurchaseOrderComponent implements OnInit {
     }
 
 
+    // Create and add line item to form display
+    protected createLineItem(){
+      return this.formBuilder.group({
+        item: this.formBuilder.control<string>('', [ Validators.required ]),
+        unitPrice: this.formBuilder.control<number>(0, [ Validators.required ]),
+        quantity: this.formBuilder.control<number>(0, [ Validators.required ])
+      })
+    }
+
+    protected addLineItem(){
+      this.lineItems.push(this.createLineItem())
+    }
+
+
+    // Remove line item
+    protected removeLineItem(index: number){
+      this.lineItems.removeAt(index)
+    }
+
+
     // Handle form submission method
     protected handleFormSubmission() {
       const newPO: PurchaseOrder = this.form.value

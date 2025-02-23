@@ -1,10 +1,13 @@
+<div class="row mt-3">
+    <h1>Order Details</h1>
+</div>
+
 <div>
 
-    <h2>Delivery Details</h2>
-
     <form [formGroup]="form" (submit)="handleFormSubmission()">
-
-        Values: {{form.value | json}}
+        <div class="row mt-2">
+            <h2>Delivery Details</h2>
+        </div>
 
         <div class="row mb-3">
             <div class="col">
@@ -76,13 +79,63 @@
             </div>
         }
 
-        
+
+        <div class="row mt-2">
+            <h2>Line Items</h2>
+        </div>
+
+        @if (lineItems.controls.length > 0) {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Item</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="lineItems">
+                    @for (item of lineItems.controls; let idx = $index; track item) {
+                        <tr [formGroupName]="idx">
+                            <td>{{idx + 1}}</td>
+                            <td>
+                                <input formControlName="item" type="text"
+                                    class="form-control">
+                            </td>
+                            <td>
+                                <div class="input-group">
+                                    <div class="input-group-text">$</div>
+                                    <input formControlName="unitPrice" type="number"
+                                        class="form-control">
+                                </div>
+                            </td>
+                            <td>
+                                <input formControlName="quantity" type="number"
+                                    class="form-control">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" (click)="removeLineItem(idx)">X</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        } @else {
+            <div class="row mb-3">
+                <p>Add items before submitting order</p>
+            </div>
+        }
+
+
 
         <div class="row mb-3">
             <div class="col d-flex gap-3">
                 <button type="submit" class="btn btn-primary">Submit Order</button>
-                <button type="button" class="btn btn-secondary">Add Item</button>
+                <button type="button" class="btn btn-secondary btn-sm" (click)="addLineItem()">Add Item</button>
             </div>
         </div>
     </form>
 </div>
+
+values: {{ form.value | json }}
