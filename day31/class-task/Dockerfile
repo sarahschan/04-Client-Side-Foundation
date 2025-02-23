@@ -20,7 +20,7 @@ COPY src src
 RUN npm ci
 
 # Build the Angular application -> dist/class-task/browser
-RUN ng build
+RUN ng build.
 
 
 ## Stage 2 ##
