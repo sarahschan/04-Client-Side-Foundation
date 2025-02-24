@@ -1,0 +1,26 @@
+<div class="cart-item row">
+
+    <div class="thumbnail col">
+        <img [src]="cartItem.image">
+    </div>
+
+    <div class="text col">
+        <div>
+            <p><strong>{{ cartItem.name }}</strong></p>
+            <table class="table">
+                <tr>
+                    <th>Price</th>
+                    <td>$ {{ cartItem.unitPrice.toFixed(2) }}</td>
+                </tr>
+                <tr>
+                    <th>Quantity</th>
+                    <td>{{ cartItem.quantity }}</td>
+                </tr>
+                <tr>
+                    <th>Item Total</th>
+                    <td>$ {{ itemTotal.toFixed(2) }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -15,8 +15,14 @@
             }
         </div>
 
+
         <div class="cart col">
+            
             <h3>Cart</h3>
+
+            @for (cartItem of cart; let idx = $index; track cartItem) {
+                <app-cart [cartItem]="cartItem"></app-cart>
+            }
         </div>
 
     </div>
