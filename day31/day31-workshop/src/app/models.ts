@@ -1,5 +1,11 @@
 export interface Fruit {
     name: string,
     image: string,
-    quantity?: number
+}
+
+
+export interface CartItem {
+    name: string,
+    image: string,
+    quantity: number
 }

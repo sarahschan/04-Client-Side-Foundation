@@ -1,3 +1,13 @@
 .thumbnail {
-    height: 5vh
+    height: 10vh;
+    padding-left: 10px;
+}
+
+.fruit-name {
+    font-size: x-large;
+    padding-top: 30px;
+}
+
+.btn {
+    margin-top: 30px;
 }

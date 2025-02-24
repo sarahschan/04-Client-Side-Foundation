@@ -8,7 +8,7 @@
 
       <div class="row gap-4">
         @for (fruit of inventory; let idx = $index; track fruit){
-            <app-inventory [fruit]="fruit" class="inventory-item"></app-inventory>
+            <app-inventory [fruit]="fruit" class="inventory-item" (changeQty)="changeQty($event)"></app-inventory>
         }
       </div>
     </div>
