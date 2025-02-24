@@ -11,6 +11,10 @@
     padding-left: 10px;
 }
 
+.item-name {
+    font-size: large;
+}
+
 .buttons {
     display: flex;
     gap: 10px;

@@ -1,0 +1,16 @@
+.cart-item {
+    border-radius: 20px;
+    background-color: lightblue;
+    border: 2px solid gray;
+    padding: 25px;
+    margin: 25px;
+}
+
+.thumbnail img {
+    height: 7vh;
+    vertical-align: middle;
+}
+
+.item-name {
+    font-size: large;
+}

@@ -21,13 +21,25 @@
 
 .cart {
     border-radius: 20px;
-    background-color: lightblue;
     padding-left: 25px;
-    padding-bottom: 25px;
     margin-left: 50px;
+}
+
+.cart-items {
+    border-radius: 20px;
+    background-color: lightsteelblue;
+    padding-bottom: 25px;
+    margin-bottom: 50px;
+}
+
+.checkout {
+    border-radius: 20px;
+    background-color: pink;
+    padding-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 .cart h3 {
     padding-top: 25px;
-    padding-left: 25px;
+    padding-left: 38px;
 }
