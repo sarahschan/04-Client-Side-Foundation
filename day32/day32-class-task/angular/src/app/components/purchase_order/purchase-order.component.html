@@ -101,18 +101,18 @@
                             <td>{{idx + 1}}</td>
                             <td>
                                 <input formControlName="item" type="text"
-                                    class="form-control">
+                                    class="form-control" [ngClass]="{'is-invalid': lineItemError(idx, 'item')}">
                             </td>
                             <td>
                                 <div class="input-group">
                                     <div class="input-group-text">$</div>
                                     <input formControlName="unitPrice" type="number"
-                                        class="form-control">
+                                        class="form-control" [ngClass]="{'is-invalid': lineItemError(idx, 'unitPrice')}">
                                 </div>
                             </td>
                             <td>
                                 <input formControlName="quantity" type="number"
-                                    class="form-control">
+                                    class="form-control" [ngClass]="{'is-invalid': lineItemError(idx, 'quantity')}">
                             </td>
                             <td>
                                 <button type="button" class="btn btn-danger" (click)="removeLineItem(idx)">X</button>
@@ -131,7 +131,7 @@
 
         <div class="row mb-3">
             <div class="col d-flex gap-3">
-                <button type="submit" class="btn btn-primary">Submit Order</button>
+                <button type="submit" class="btn btn-primary" [disabled]="isFormInvalid()">Submit Order</button>
                 <button type="button" class="btn btn-secondary btn-sm" (click)="addLineItem()">Add Item</button>
             </div>
         </div>

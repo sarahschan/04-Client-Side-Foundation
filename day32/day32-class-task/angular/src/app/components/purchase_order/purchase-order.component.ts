@@ -54,6 +54,13 @@ export class PurchaseOrderComponent implements OnInit {
       return field.dirty && field.invalid
     }
 
+    protected lineItemError(index: number, fieldName: string): boolean {
+      const lineItemsArray = this.form.get('lineItems') as FormArray
+      const lineItemGroup = lineItemsArray.at(index) as FormGroup
+      const field = lineItemGroup.get(fieldName) as FormControl
+      return field.dirty && field.invalid
+    }
+
 
     // Show delivery times?
     protected showDeliveryTime = true
@@ -65,9 +72,9 @@ export class PurchaseOrderComponent implements OnInit {
     // Create and add line item to form display
     protected createLineItem(){
       return this.formBuilder.group({
-        item: this.formBuilder.control<string>('', [ Validators.required ]),
-        unitPrice: this.formBuilder.control<number>(0, [ Validators.required ]),
-        quantity: this.formBuilder.control<number>(0, [ Validators.required ])
+        item: this.formBuilder.control<string>('', [ Validators.required, Validators.minLength(3) ]),
+        unitPrice: this.formBuilder.control<number>(0, [ Validators.required, Validators.min(0.1) ]),
+        quantity: this.formBuilder.control<number>(1, [ Validators.required, Validators.min(1) ])
       })
     }
 
@@ -81,6 +88,11 @@ export class PurchaseOrderComponent implements OnInit {
       this.lineItems.removeAt(index)
     }
 
+
+    // Check form validity method
+    protected isFormInvalid() {
+      return this.form.invalid || this.lineItems.length <= 0
+    }
 
     // Handle form submission method
     protected handleFormSubmission() {
