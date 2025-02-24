@@ -1,17 +1,11 @@
 
 .row {
     display: flex;
-    height: 100vh;
 }
 
 .inventory {
     border: 2px solid red;
     padding: 50px;
-}
-
-.inventory-item {
-    border: 2px solid lightgrey;
-    border-radius: 10px;
 }
 
 .cart {

@@ -7,7 +7,7 @@
       <h1>{{ title | titlecase }}</h1>
 
       <div class="row gap-4">
-        @for (fruit of inventory; let idx = $index; track fruit){
+        @for (fruit of inventory; let idx = $index; track fruit) {
             <app-inventory [fruit]="fruit" class="inventory-item" (changeQty)="changeQty($event)"></app-inventory>
         }
       </div>
@@ -17,6 +17,12 @@
     <div class="cart col-6">
 
       <h1>Cart</h1>
+
+      <div class="row gap-4">
+        @for (cartItem of cart; let idx = $index; track cartItem) {
+          <app-cart [cartItem]="cartItem" (onDelete)="whenDelete($event)"></app-cart>
+        }
+      </div>
     </div>
 
   </div>

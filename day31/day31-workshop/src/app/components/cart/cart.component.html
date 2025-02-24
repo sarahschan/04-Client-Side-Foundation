@@ -1,0 +1,19 @@
+<div class="row cart-item">
+
+    <div class="col">
+        <img [src]="cartItem.image" class="thumbnail">
+    </div>
+
+    <div class="col">
+        <p class="text">{{ cartItem.name }}</p>
+    </div>
+
+    <div class="col">
+        <p class="text">Qty: {{ cartItem.quantity }}</p>
+    </div>
+
+    <div class="col">
+        <button class="btn btn-danger" (click)="deleteItem()">X</button>
+    </div>
+
+</div>

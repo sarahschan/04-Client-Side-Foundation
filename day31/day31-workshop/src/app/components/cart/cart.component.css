@@ -1,0 +1,18 @@
+.cart-item {
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+
+.thumbnail {
+    height: 6vh;
+    padding-left: 10px;
+}
+
+.text {
+    font-size: large;
+    padding-top: 15px;
+}
+
+.btn {
+    margin-top: 10px;
+}

@@ -36,4 +36,14 @@ export class AppComponent {
     console.log('Updated Cart: ', this.cart)
   }
 
+
+  whenDelete(event: { cartItem: CartItem }) {
+    this.cart = this.cart.filter(item => item.name !== event.cartItem.name)
+    // Alternative method: (more similar to .remove or .delete)
+    // const index = this.cart.findIndex(item => item.name === event.cartItem.name)
+    // if (index !== -1) {
+    //   this.cart.splice(index, 1)
+    // }
+  }
+
 }

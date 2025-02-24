@@ -1,3 +1,8 @@
+.inventory-item {
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+}
+
 .thumbnail {
     height: 10vh;
     padding-left: 10px;
