@@ -1,0 +1,18 @@
+<div class="inventory-item row">
+
+    <div class="thumbnail col-5">
+        <img [src]="fruit.image">
+    </div>
+
+    <div class="text col">
+        <div>
+            <p><strong>{{ fruit.name }}</strong></p>
+            <p>$ {{ fruit.price.toFixed(2) }}</p>
+        </div>
+        <div class="buttons">
+            <button class="btn btn-secondary btn-sm" (click)="changeQty(+1)">+</button>
+            <button class="btn btn-secondary btn-sm" (click)="changeQty(-1)">-</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,33 @@
+.page {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.page-title {
+    margin-bottom: 50px;
+}
+
+.inventory {
+    border-radius: 20px;
+    background-color: darkgrey;
+    padding-right: 25px;
+    padding-bottom: 25px;
+}
+
+.inventory h3 {
+    padding-top: 25px;
+    padding-left: 25px;
+}
+
+.cart {
+    border-radius: 20px;
+    background-color: lightblue;
+    padding-left: 25px;
+    padding-bottom: 25px;
+    margin-left: 50px;
+}
+
+.cart h3 {
+    padding-top: 25px;
+    padding-left: 25px;
+}
