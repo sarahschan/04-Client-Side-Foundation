@@ -1,0 +1,54 @@
+<div>
+    <div class="title">
+        <h1>To Do List</h1>
+    </div>
+
+    <div class="form">
+        <form [formGroup]="form">
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label class="form-label">Description</label>
+                </div>
+                <div class="col">
+                    <input formControlName="description" type="text"
+                        class="form-control col-5">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label class="form-label">Priority</label>
+                </div>
+                <div class="col d-flex">
+                    <div class="col form-check">
+                        <input formControlName="priority" type="radio" value="high"
+                            class="form-check-input">
+                        <label class="form-check-label">High</label>
+                    </div>
+                    <div class="col form-check">
+                        <input formControlName="priority" type="radio" value="medium"
+                            class="form-check-input">
+                        <label class="form-check-label">Medium</label>
+                    </div>
+                    <div class="col form-check">
+                        <input formControlName="priority" type="radio" value="low"
+                            class="form-check-input">
+                        <label class="form-check-label">Low</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-2">
+                    <label class="form-label">Due Date</label>
+                </div>
+                <div class="col">
+                    <input formControlName="dueDate" type="date"
+                        class="form-control col-5">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+values: {{ form.value | json }}
