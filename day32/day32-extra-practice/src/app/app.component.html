@@ -21,16 +21,20 @@
             <div class="cart-items row">
                 <h3>Cart</h3>
 
+                @if (cart.length === 0) {
+                    <p>Your cart is empty</p>
+                }
+
                 @for (cartItem of cart; let idx = $index; track cartItem) {
                 <app-cart [cartItem]="cartItem"></app-cart>
                 }
 
-                <div class="checkout row">
-                    <h3>Checkout</h3>
-                    <app-checkout [cart]="cart"></app-checkout>
-                </div>
             </div>
 
+            <div class="checkout row">
+                <h3>Checkout</h3>
+                <app-checkout [cart]="cart"></app-checkout>
+            </div>
         </div>
 
     </div>
