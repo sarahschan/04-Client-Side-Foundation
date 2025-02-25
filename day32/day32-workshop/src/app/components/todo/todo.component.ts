@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { futureOrPresentValidator } from '../../validators/futureOrPresent.validator';
 import { Task } from '../../models';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-todo',
@@ -36,10 +37,13 @@ export class TodoComponent {
     return this.form.invalid
   }
 
+  @Output()
+  addTask = new Subject<Task>()
+  
   protected handleAddTask() {
     const newTask: Task = this.form.value
-    console.info('>>> recieved Task: ', newTask)
+    this.addTask.next(newTask)
+      // console.info('>>> sent Task to AppComponent: ', newTask)
   }
-
 
 }

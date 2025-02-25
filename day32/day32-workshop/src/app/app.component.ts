@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './models';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'day32-workshop';
+  
+  title = 'To Do List';
+
+  tasks: Task[] = []
+  
+  addTask(task: Task) {
+    console.info('>>> Recieved Task from todo component: ', task)
+    this.tasks.push(task)
+  }
 }

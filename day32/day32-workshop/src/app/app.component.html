@@ -1,1 +1,11 @@
-<app-todo></app-todo>
+<div>
+    <h1>{{ title }}</h1>
+</div>
+
+<div>
+    <app-todo (addTask)="addTask($event)"></app-todo>
+</div>
+
+<div>
+    <app-tasks [tasks]="tasks"></app-tasks>
+</div>
