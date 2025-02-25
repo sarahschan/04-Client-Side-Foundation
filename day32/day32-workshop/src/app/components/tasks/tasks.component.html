@@ -2,6 +2,8 @@
     <h2>Tasks</h2>
 </div>
 
+<div class="spacer"></div>
+
 <div>
 
     @if ( tasks.length === 0) {
@@ -9,14 +11,16 @@
     }
 
     <div>
-        @for (task of tasks; let idx = $index; track task) {
-            <h4>{{ task.description }}</h4>
-            <div class="row">
-                <div class="col">
-                    <p><em>{{ task.priority }}</em></p>
-                </div>
-                <div class="col">
-                    <p><em>{{ task.dueDate }}</em></p>
+        @for (task of sortedTasks; let idx = $index; track task) {
+            <div class="task">
+                <h4>{{ task.description }}</h4>
+                <div class="row">
+                    <div class="col">
+                        <p><em>{{ task.priority }}</em></p>
+                    </div>
+                    <div class="col">
+                        <p><em>{{ task.dueDate }}</em></p>
+                    </div>
                 </div>
             </div>
         }

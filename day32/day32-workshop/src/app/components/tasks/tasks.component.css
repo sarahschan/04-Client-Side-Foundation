@@ -1,0 +1,11 @@
+.spacer {
+    height: 30px;
+}
+
+.task {
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: aqua;
+    margin-bottom: 50px;
+    padding: 30px;
+}
