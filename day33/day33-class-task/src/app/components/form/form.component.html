@@ -1,0 +1,86 @@
+<div>
+    <h2>Add New Member</h2>
+
+    <div class="spacer-md"></div>
+
+    <form [formGroup]="form" (submit)="processForm()">
+
+        <h3>Member Details</h3>
+
+        <div class="spacer-sm"></div>
+
+        <div class="member-detail-row mb-3">
+            <div>
+                <label class="form-label">Name</label>
+            </div>
+            <div>
+                <input formControlName="name" type="text"
+                    class="form-control" [ngClass]="{'is-invalid': memberFieldError('name')}">
+            </div>
+        </div>
+
+        <div class="member-detail-row mb-3">
+            <div>
+                <label class="form-label">Email</label>
+            </div>
+            <div>
+                <input formControlName="email" type="text"
+                    class="form-control" [ngClass]="{'is-invalid': memberFieldError('email')}">
+            </div>
+        </div>
+
+        <div class="member-detail-row mb-3">
+            <div>
+                <label class="form-label">Phone</label>
+            </div>
+            <div>
+                <input formControlName="phone" type="number"
+                    class="form-control"  [ngClass]="{'is-invalid': memberFieldError('phone')}">
+            </div>
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Hobbies</h3>
+            </div>
+            <div class="col text-end">
+                <button type="button" (click)="addHobby()" class="btn btn-secondary btn-sm">+ Add</button>
+            </div>
+        </div>
+
+        <div class="spacer-sm"></div>
+
+        @if (hobbies.controls.length === 0) {
+            <h6>Add hobbies to submit</h6>
+        }
+
+        <div formArrayName="hobbies">
+            @for (h of hobbies.controls; let idx = $index; track h ) {
+                <div [formGroupName]="idx" class="hobby-row mb-3">
+                    <div class="hobbies-index">
+                        {{ idx + 1 }}
+                    </div>
+    
+                    <div>
+                        <input formControlName="hobby" type="text"
+                            class="form-control" [ngClass]="{'is-invalid': hobbyFieldError(idx, 'hobby')}">
+                    </div>
+    
+                    <div class="text-end">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeHobby(idx)">X</button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="spacer-md"></div>
+
+        <div>
+            <button type="submit" class="btn btn-primary btn-sm" [disabled]="formInvalid()">Submit New Member</button>
+        </div>
+        
+
+    </form>
+</div>

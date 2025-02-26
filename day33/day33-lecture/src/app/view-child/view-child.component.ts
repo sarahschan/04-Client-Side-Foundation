@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Order } from '../models';
 
 @Component({
   selector: 'app-view-child',
@@ -49,6 +50,11 @@ export class ViewChildComponent {
 
   protected removeProduct(idx: number) {
     this.products.removeAt(idx)
+  }
+
+  protected submitOrder() {
+    const newOrder: Order = this.form.value
+    console.info('>>> Order: ', newOrder)
   }
 
 }

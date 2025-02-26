@@ -1,0 +1,20 @@
+.spacer {
+    height: 2vh;
+}
+
+.indvMember {
+    background-color: lightgray;
+    border-radius: 20px;
+    padding-left: 3%;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    padding-right: 3%;
+    margin-bottom: 3%
+}
+
+.member-info-row {
+    display: grid;
+    grid-template-columns: 2fr 15fr;
+    gap: 1vw;
+}
+

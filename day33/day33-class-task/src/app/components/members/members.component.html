@@ -1,0 +1,52 @@
+<div>
+    <h3>Members</h3>
+</div>
+
+<div class="spacer"></div>
+
+@for (member of members; let idx = $index; track member) {
+    <div class="indvMember">
+
+        <div class="member-info-row">
+            <div class="col">
+                <p><strong>Name</strong></p>
+            </div>
+            <div class="col">
+                <p>{{ member.name }}</p>
+            </div>
+        </div>
+
+        <div class="member-info-row">
+            <div class="col">
+                <p><strong>Email</strong></p>
+            </div>
+            <div class="col">
+                <p>{{ member.email }}</p>
+            </div>
+        </div>
+
+        <div class="member-info-row">
+            <div class="col">
+                <p><strong>Phone</strong></p>
+            </div>
+            <div class="col">
+                <p>{{ member.phone }}</p>
+            </div>
+        </div>
+
+        <div class="member-info-row">
+            <div class="col">
+                <p><strong>Hobbies</strong></p>
+            </div>
+            <div class="col">
+                <p>
+                    @for (hobby of member.hobbies; let idx = $index; track hobby) {
+                        {{ hobby.hobby }} <br>
+                    }
+                </p>
+            </div>
+        </div>
+
+    </div>
+}
+

@@ -1,0 +1,24 @@
+.spacer-sm {
+    height: 1vh;
+}
+
+.spacer-md {
+    height: 4vh;
+}
+
+.member-detail-row {
+    display: grid;
+    grid-template-columns: 1fr 15fr;
+    gap: 1vw;
+}
+
+.hobby-row {
+    display: grid;
+    grid-template-columns: 1fr 15fr 1fr;
+    gap: 1vw;
+}
+
+.hobbies-index {
+    text-align: center;
+    padding-top: 5px;
+}

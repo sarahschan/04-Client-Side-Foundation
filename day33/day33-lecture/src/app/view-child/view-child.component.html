@@ -7,7 +7,7 @@
 
     <div class="spacer"></div>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" (submit)="submitOrder()">
 
         <div>
             <button type="button" class="btn btn-secondary btn-sm" (click)="addProduct()">Add Product</button>
@@ -15,47 +15,59 @@
 
         <div class="spacer"></div>
 
-            <table class="table table-hover">
-                <thead>
-                    <th class="form-title text-center">No</th>
-                    <th class="form-title col-3">Name</th>
-                    <th class="form-title">Description</th>
-                    <th class="form-title col-1">Quantity</th>
-                    <th></th>
-                </thead>
+            @if (products.controls.length === 0) {
+                <div>
+                    <p>No products added</p>
+                </div>
 
-                <tbody formArrayName="products">
+            } @else {
+                <table class="table table-hover">
+                    <thead>
+                        <th class="form-title text-center">No</th>
+                        <th class="form-title col-3">Name</th>
+                        <th class="form-title">Description</th>
+                        <th class="form-title col-1">Quantity</th>
+                        <th></th>
+                    </thead>
+    
+                    <tbody formArrayName="products">
+    
+                        @for (product of products.controls; let idx = $index; track product) {
+                            <tr [formGroupName] = "idx">
+    
+                                <td class="text-center">{{idx + 1}}</td>
+    
+                                <td>
+                                    <input formControlName="name" type="text"
+                                        class="form-control">
+                                </td>
+    
+                                <td>
+                                    <input formControlName="description" type="text"
+                                        class="form-control">
+                                </td>
+    
+                                <td>
+                                    <input formControlName="quantity" type="number"
+                                        class="form-control">
+                                </td>
+    
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="removeProduct(idx)">X</button>
+                                </td>
+                            </tr>
+                        }
+                        
+                    </tbody>
+                        
+                </table>
+            }
 
-                    @for (product of products.controls; let idx = $index; track product) {
-                        <tr [formGroupName] = "idx">
+        <div class="spacer-large"></div>
 
-                            <td class="text-center">{{idx + 1}}</td>
-
-                            <td>
-                                <input formControlName="name" type="text"
-                                    class="form-control">
-                            </td>
-
-                            <td>
-                                <input formControlName="description" type="text"
-                                    class="form-control">
-                            </td>
-
-                            <td>
-                                <input formControlName="quantity" type="number"
-                                    class="form-control">
-                            </td>
-
-                            <td>
-                                <button type="button" class="btn btn-danger btn-sm" (click)="removeProduct(idx)">X</button>
-                            </td>
-                        </tr>
-                    }
-                    
-                </tbody>
-                    
-            </table>
-
+        <div>
+            <button type="submit" class="btn btn-primary btn-sm">Submit Order</button>
+        </div>
         
     </form>
     
