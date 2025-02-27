@@ -1,0 +1,16 @@
+.spacer-sm {
+    height: 2vh;
+}
+
+.card-img-top {
+    height: 30vh;
+    object-fit: cover;
+}
+
+.card {
+    height: 40vh;
+}
+
+.card-text {
+    flex-grow: 1; /* Push caption text to the bottom */
+}

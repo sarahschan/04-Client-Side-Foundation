@@ -1,0 +1,24 @@
+<div>
+    <h1>Fakery Gallery</h1>
+
+    <div class="spacer-sm"></div>
+
+    @if (photos.length === 0) {
+        <p>No photos to show</p>
+    }
+
+    <div class="row">
+
+        @for (photo of photosLimited; let idx = $index; track idx) {
+            <div class="col-sm-4 mb-4">
+                <div class="card d-flex flex-column">
+                    <img class="card-img-top" src={{photo.photo_url}}>
+                    <div class="card-body">
+                        <p class="card-text">{{photo.caption}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        }
+    </div>
+</div>
