@@ -6,7 +6,7 @@ import { CreateEmployeeComponent } from './components/createEmployee/create-empl
 import { DetailsEmployeeComponent } from './components/detailsEmployee/details-employee.component';
 import { ListEmployeeComponent } from './components/listEmployee/list-employee.component';
 import { UpdateEmployeeComponent } from './components/updateEmployee/update-employee.component';
-import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MaterialModule } from './material/material/material.module';
 
 @NgModule({

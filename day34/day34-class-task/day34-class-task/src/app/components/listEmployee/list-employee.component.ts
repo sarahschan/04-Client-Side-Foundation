@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Employee } from '../../models/models';
 import { EmployeeService } from '../../services/employee.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,14 +14,9 @@ import { MatPaginator } from '@angular/material/paginator';
 
 export class ListEmployeeComponent implements OnInit, AfterViewInit {
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor( private employeeService: EmployeeService ) { }
 
   employees: Employee[] = []
-
-  dataSource = new MatTableDataSource<Employee>(this.employees)
-  displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'actions']
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator
 
   ngOnInit(): void {
     this.employeeService.getAllEmployees().subscribe({
@@ -36,6 +31,11 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
     }
     )
   }
+
+  displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'actions']
+  dataSource = new MatTableDataSource<Employee>(this.employees)
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator

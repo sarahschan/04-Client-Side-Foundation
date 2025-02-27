@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "day31-class-task": {
+    "day34-class-task": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/day31-class-task",
+            "outputPath": "dist/day34-class-task",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "day31-class-task:build:production"
+              "buildTarget": "day34-class-task:build:production"
             },
             "development": {
-              "buildTarget": "day31-class-task:build:development"
+              "buildTarget": "day34-class-task:build:development"
             }
           },
           "defaultConfiguration": "development"

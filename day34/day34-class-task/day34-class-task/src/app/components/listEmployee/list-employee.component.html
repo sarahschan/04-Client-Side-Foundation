@@ -1,8 +1,8 @@
 <h1>List of Employees</h1>
 
-<div class="table">
+<div class="table-section">
 
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z24">
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>Employee ID</th>
@@ -38,6 +38,8 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <div class="spacer"></div>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons

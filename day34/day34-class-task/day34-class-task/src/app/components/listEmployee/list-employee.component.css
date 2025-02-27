@@ -1,0 +1,29 @@
+.table-section {
+    background-color: #faf9fd;
+    border-radius: 20px;
+    padding: 1em 2em;
+}
+
+.spacer {
+    height: 1.5em;
+}
+
+.mat-column-id {
+    width: 10%;
+}
+
+.mat-column-fname {
+    width: 20%;
+}
+
+.mat-column-lname {
+    width: 20%;
+}
+
+.mat-column-email {
+    width: 30%;
+}
+
+.mat-column-actions {
+    width: 20%;
+}
