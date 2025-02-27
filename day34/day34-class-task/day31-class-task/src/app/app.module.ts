@@ -6,7 +6,8 @@ import { CreateEmployeeComponent } from './components/createEmployee/create-empl
 import { DetailsEmployeeComponent } from './components/detailsEmployee/details-employee.component';
 import { ListEmployeeComponent } from './components/listEmployee/list-employee.component';
 import { UpdateEmployeeComponent } from './components/updateEmployee/update-employee.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { MaterialModule } from './material/material/material.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
     UpdateEmployeeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MaterialModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())
