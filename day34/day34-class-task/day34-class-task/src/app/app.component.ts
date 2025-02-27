@@ -11,11 +11,4 @@ export class AppComponent {
 
   title = 'day34-class-task';
 
-  @ViewChild(ListEmployeeComponent)
-  listEmployeeComponent!: ListEmployeeComponent
-
-  onEmployeeAdded() {
-    console.log('>>> Employee added, updating list');
-    this.listEmployeeComponent.fetchEmployees()
-  }
 }

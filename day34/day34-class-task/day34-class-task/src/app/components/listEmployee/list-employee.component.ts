@@ -3,6 +3,7 @@ import { Employee } from '../../models/models';
 import { EmployeeService } from '../../services/employee.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,11 +17,34 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
 
   private employeeService = inject(EmployeeService)
 
+  private subscription!: Subscription;
+
   displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'actions']
   dataSource = new MatTableDataSource<Employee>([])
 
   ngOnInit(): void {
-    this.fetchEmployees()
+    // First fetch
+    this.employeeService.getAllEmployees().subscribe({
+      next: (data: Employee[]) => {
+        this.dataSource.data = data
+        console.log('>>> Employees fetched: ', data)
+      },
+      error: (error) => {
+        console.error('>>> Error fetching employees: ', error)
+      }
+    })
+
+    // Subscribe to the employees$ observable to get the latest data
+    this.subscription = this.employeeService.employees$.subscribe({
+      next: (data: Employee[]) => {
+        this.dataSource.data = data;
+        console.log('Employees fetched:', data);
+      },
+      error: (error) => {
+        console.error('Error fetching employees:', error);
+      }
+    });
+
   }
 
   fetchEmployees(): void {
@@ -43,15 +67,21 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
   }
 
   deleteEmployeeById(empId: string) {
-    console.info('>>> empId to delete: ', empId)
     this.employeeService.deleteEmployee(empId).subscribe({
       next: () => {
-        this.fetchEmployees()
+        console.log('Employee deleted');
       },
       error: (error) => {
-        console.error('>>> Error deleting employee', error)
+        console.error('Error deleting employee', error);
       }
-    })
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe to prevent memory leaks
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

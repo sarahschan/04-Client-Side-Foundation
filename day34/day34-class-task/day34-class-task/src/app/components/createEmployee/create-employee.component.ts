@@ -12,9 +12,6 @@ import { Subject } from 'rxjs/internal/Subject';
 })
 export class CreateEmployeeComponent implements OnInit {
 
-  @Output()
-  employeeAdded = new Subject<null>()
-
   private formBuilder = inject(FormBuilder)
   private employeeService = inject(EmployeeService)
 
@@ -42,7 +39,6 @@ export class CreateEmployeeComponent implements OnInit {
     this.employeeService.createEmployee(newEmployee).subscribe({
       next: () => {
         console.log('>>> Employee saved')
-        this.employeeAdded.next(null)
         this.form.reset()
       },
       error: (error) => {
