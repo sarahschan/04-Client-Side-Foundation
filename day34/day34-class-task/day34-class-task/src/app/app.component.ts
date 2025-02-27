@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ListEmployeeComponent } from './components/listEmployee/list-employee.component';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'day31-class-task';
+
+  title = 'day34-class-task';
+
+  @ViewChild(ListEmployeeComponent)
+  listEmployeeComponent!: ListEmployeeComponent
+
+  onEmployeeAdded() {
+    console.log('>>> Employee added, updating list');
+    this.listEmployeeComponent.fetchEmployees()
+  }
 }

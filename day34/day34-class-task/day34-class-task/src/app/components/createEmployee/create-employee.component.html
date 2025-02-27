@@ -1,1 +1,33 @@
-<p>create-employee works!</p>
+<div>
+    <h1>Create Employee</h1>
+
+    <div>
+        <form method="POST" [formGroup]="form" (submit)="postEmployee()">
+            <div class="row mb-4">
+                <label class="custom-label col-form-label">First Name</label>
+                <div class="col">
+                    <input formControlName="firstName" type="text" 
+                        class="form-control">
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label class="custom-label col-form-label">Last Name</label>
+                <div class="col">
+                    <input formControlName="lastName" type="text"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="row mb-4">
+                <label class="custom-label col-form-label">Email Address</label>
+                <div class="col">
+                    <input formControlName="emailId" type="text" 
+                        class="form-control">
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

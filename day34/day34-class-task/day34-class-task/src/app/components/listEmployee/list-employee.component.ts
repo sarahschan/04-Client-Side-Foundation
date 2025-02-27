@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Employee } from '../../models/models';
 import { EmployeeService } from '../../services/employee.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,26 +14,27 @@ import { MatPaginator } from '@angular/material/paginator';
 
 export class ListEmployeeComponent implements OnInit, AfterViewInit {
 
-  constructor( private employeeService: EmployeeService ) { }
-
-  employees: Employee[] = []
-
-  ngOnInit(): void {
-    this.employeeService.getAllEmployees().subscribe({
-      next: (data: Employee[]) => {
-        this.employees = data
-        this.dataSource.data = this.employees
-        console.log('Employees: ', this.employees)
-      },
-      error: (error) => {
-        console.error('Error fetching employees: ', error)
-      }
-    }
-    )
-  }
+  private employeeService = inject(EmployeeService)
 
   displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'actions']
-  dataSource = new MatTableDataSource<Employee>(this.employees)
+  dataSource = new MatTableDataSource<Employee>([])
+
+  ngOnInit(): void {
+    this.fetchEmployees()
+  }
+
+  fetchEmployees(): void {
+    this.employeeService.getAllEmployees().subscribe({
+      next: (data: Employee[]) => {
+        this.dataSource.data = data
+        console.log('>>> Employees fetched: ', data)
+      },
+      error: (error) => {
+        console.error('>>> Error fetching employees: ', error)
+      }
+    })
+  }
+  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -41,4 +42,17 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator
   }
 
+  deleteEmployeeById(empId: string) {
+    console.info('>>> empId to delete: ', empId)
+    this.employeeService.deleteEmployee(empId).subscribe({
+      next: () => {
+        this.fetchEmployees()
+      },
+      error: (error) => {
+        console.error('>>> Error deleting employee', error)
+      }
+    })
+  }
+
 }
+

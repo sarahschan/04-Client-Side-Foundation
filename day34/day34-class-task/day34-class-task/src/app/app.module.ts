@@ -8,6 +8,7 @@ import { ListEmployeeComponent } from './components/listEmployee/list-employee.c
 import { UpdateEmployeeComponent } from './components/updateEmployee/update-employee.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MaterialModule } from './material/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MaterialModule } from './material/material/material.module';
   ],
   imports: [
     BrowserModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())

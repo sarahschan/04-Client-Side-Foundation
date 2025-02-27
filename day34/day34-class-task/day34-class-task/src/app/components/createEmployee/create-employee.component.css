@@ -1,0 +1,13 @@
+/* Custom width for the labels */
+.custom-label {
+    width: 13%; /* Adjust as needed */
+}
+
+/* Optional: ensure the form controls take the remaining space */
+.form-control {
+    width: 100%;
+}
+
+.btn {
+    margin-left: 13%;
+}
