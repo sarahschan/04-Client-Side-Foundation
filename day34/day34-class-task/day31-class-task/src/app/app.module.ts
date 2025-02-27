@@ -6,6 +6,7 @@ import { CreateEmployeeComponent } from './components/createEmployee/create-empl
 import { DetailsEmployeeComponent } from './components/detailsEmployee/details-employee.component';
 import { ListEmployeeComponent } from './components/listEmployee/list-employee.component';
 import { UpdateEmployeeComponent } from './components/updateEmployee/update-employee.component';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { UpdateEmployeeComponent } from './components/updateEmployee/update-empl
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,5 +12,16 @@
             </tr>
         </thead>
 
+        <tbody>
+            @for (employee of employees; track employees) {
+                <tr>
+                    <td>{{ employee.id}}</td>
+                    <td>{{ employee.firstName | titlecase }}</td>
+                    <td>{{ employee.lastName | titlecase }}</td>
+                    <td>{{ employee.emailId }}</td>
+                </tr>
+            }
+        </tbody>
+
     </table>
 </div>
