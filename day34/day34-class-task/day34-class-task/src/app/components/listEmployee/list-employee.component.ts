@@ -4,6 +4,8 @@ import { EmployeeService } from '../../services/employee.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -21,6 +23,9 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'actions']
   dataSource = new MatTableDataSource<Employee>([])
+  
+  private dialog = inject(MatDialog)
+
 
   ngOnInit(): void {
     // First fetch
@@ -66,15 +71,24 @@ export class ListEmployeeComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator
   }
 
-  deleteEmployeeById(empId: string) {
-    this.employeeService.deleteEmployee(empId).subscribe({
-      next: () => {
-        console.log('Employee deleted');
-      },
-      error: (error) => {
-        console.error('Error deleting employee', error);
+  openDeleteDialog(empId: string) {
+
+    const dialogRef = this.dialog.open(DeleteDialogComponent)
+
+    dialogRef.afterClosed().subscribe( result => {
+      if (result) {
+        console.log('>>> Deleting employee')
+        this.employeeService.deleteEmployee(empId).subscribe({
+          next: () => {
+            console.log('>>> Employee deleted');
+          },
+          error: (error) => {
+            console.error('>>> Error deleting employee', error);
+          }
+        });
       }
-    });
+    })
+    
   }
 
   ngOnDestroy(): void {

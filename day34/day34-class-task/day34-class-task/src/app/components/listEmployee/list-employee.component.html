@@ -30,7 +30,7 @@
                 <div class="row gap-3">
                     <button class="col-3 btn btn-primary btn-sm" [routerLink]="['/employeeDetails', employee.id]">View</button>
                     <button class="col-3 btn btn-warning btn-sm" [routerLink]="['/employeeUpdate', employee.id]">Edit</button>
-                    <button class="col-3 btn btn-danger btn-sm" (click)="deleteEmployeeById(employee.id)">Delete</button>
+                    <button class="col-3 btn btn-danger btn-sm" (click)="openDeleteDialog(employee.id)">Delete</button>
                 </div>
             </td>
           </ng-container>
@@ -42,8 +42,7 @@
     <div class="spacer"></div>
 
     <mat-paginator [pageSizeOptions]="[10, 20, 30]"
-                 showFirstLastButtons
-                 aria-label="Select page">
+                 showFirstLastButtons>
     </mat-paginator>
 
 </div>

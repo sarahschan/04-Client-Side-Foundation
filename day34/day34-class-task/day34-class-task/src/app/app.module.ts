@@ -14,6 +14,7 @@ import { RouteGuardService } from './services/route-guard.service';
 import { TestComponent } from './components/test/test.component';
 import { DeactivateGuardService } from './services/deactivate-guard.service';
 import { DebounceComponent } from './components/debounce/debounce.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DebounceComponent } from './components/debounce/debounce.component';
     ListEmployeeComponent,
     UpdateEmployeeComponent,
     TestComponent,
-    DebounceComponent
+    DebounceComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
