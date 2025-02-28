@@ -1,1 +1,33 @@
-<p>details-employee works!</p>
+<h1>Employee Details</h1>
+
+<div>
+
+    <table class="table">
+
+        <tr>
+            <th class="w-25">Employee ID</th>
+            <td>{{ employee.id }}</td>
+        </tr>
+
+        <tr>
+            <th class="w-25">First Name</th>
+            <td>{{ employee.firstName }}</td>
+        </tr>
+
+        <tr>
+            <th class="w-25">Last Name</th>
+            <td>{{ employee.lastName }}</td>
+        </tr>
+
+        <tr>
+            <th class="w-25">Email Address</th>
+            <td>{{ employee.emailId }}</td>
+        </tr>
+
+    </table>
+
+</div>
+
+<div>
+    <button class="btn btn-secondary btn-sm" [routerLink]="['/employeeList']">Back to All Employees</button>
+</div>

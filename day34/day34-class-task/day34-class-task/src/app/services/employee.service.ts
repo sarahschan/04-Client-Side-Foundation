@@ -30,7 +30,7 @@ export class EmployeeService {
   }
 
   createEmployee(newEmployee: Employee): Observable<Object> {
-    return this.httpClient.post<Employee>(this.baseURL, newEmployee)
+    return this.httpClient.post<Object>(this.baseURL, newEmployee)
       .pipe(switchMap(() => this.getAllEmployees())); // Re-fetch and update employees list after creating
   }
 
