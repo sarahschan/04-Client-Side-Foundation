@@ -29,7 +29,7 @@
             <td mat-cell *matCellDef="let employee">
                 <div class="row gap-3">
                     <button class="col-3 btn btn-primary btn-sm" [routerLink]="['/employeeDetails', employee.id]">View</button>
-                    <button class="col-3 btn btn-warning btn-sm" [routerLink]="['/updateEmployee', employee.id]">Edit</button>
+                    <button class="col-3 btn btn-warning btn-sm" [routerLink]="['/employeeUpdate', employee.id]">Edit</button>
                     <button class="col-3 btn btn-danger btn-sm" (click)="deleteEmployeeById(employee.id)">Delete</button>
                 </div>
             </td>

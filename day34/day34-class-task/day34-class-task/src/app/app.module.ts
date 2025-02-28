@@ -10,6 +10,10 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { MaterialModule } from './material/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { RouteGuardService } from './services/route-guard.service';
+import { TestComponent } from './components/test/test.component';
+import { DeactivateGuardService } from './services/deactivate-guard.service';
+import { DebounceComponent } from './components/debounce/debounce.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,9 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     CreateEmployeeComponent,
     DetailsEmployeeComponent,
     ListEmployeeComponent,
-    UpdateEmployeeComponent
+    UpdateEmployeeComponent,
+    TestComponent,
+    DebounceComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,9 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     AppRoutingModule
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withInterceptorsFromDi()),
+    RouteGuardService,
+    DeactivateGuardService
   ],
   bootstrap: [AppComponent]
 })

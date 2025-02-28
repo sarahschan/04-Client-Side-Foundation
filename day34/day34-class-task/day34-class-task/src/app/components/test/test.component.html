@@ -1,0 +1,13 @@
+<p>test works!</p>
+<!-- {{data | json}} -->
+
+<div>
+    <select name="countries">
+        <option value="" selected disabled> -- select -- </option>
+
+        @for (country of data; let idx = $index; track country) {
+            <option value="{{country.code}}">{{country.name}}</option>
+        }
+        
+    </select>
+</div>
