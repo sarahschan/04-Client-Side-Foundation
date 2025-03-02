@@ -8,11 +8,15 @@ import { Component } from '@angular/core';
 })
 export class CountryListComponent {
 
-    locations: string[] = ['Singapore', 'Tokyo', 'Shanghai']
+    locations: string[] = ['singapore', 'tokyo', 'shanghai']
 
     addCountry(locationInput: string) {
       console.info("Adding to locations: ", locationInput)
-      this.locations.push(locationInput)
+      if (this.locations.includes(locationInput.toLowerCase())) {
+        console.info("Location already exists in the list")
+      } else {
+        this.locations.push(locationInput)
+      }
     }
 
     removeLocation(index: number) {
