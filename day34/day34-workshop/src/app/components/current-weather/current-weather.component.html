@@ -1,0 +1,26 @@
+<h1>Current Weather Information</h1>
+
+<form [formGroup]="cityForm" (submit)="getWeatherForCity()">
+    <div class="row d-flex align-items-center justify-content-start">
+        <label class="col-auto form-label">City:</label>
+        <div class="col-auto">
+            <select  formControlName="selectedCity" class="form-select">
+                <option value="" selected disabled> -- select a city -- </option>
+                @for (city of citiesList; let idx = $index; track city) {
+                    <option value="{{ city.name }}">{{ city.name }}</option>
+                }
+            </select>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-secondary btn-sm" type="submit">Get</button>
+        </div>
+    </div>
+</form>
+
+
+@if (selectedCity){
+    <div>A city has been selected</div>
+
+} @else {
+    <div>No city has been selected</div>
+}

@@ -30,6 +30,7 @@ export class TestComponent implements OnInit {
   }
 
   data = countries
+  
   ngOnInit(): void {
       this.sumOfNumbers()
       console.info(this.data)
