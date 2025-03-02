@@ -1,0 +1,30 @@
+<h1>List of Locations</h1>
+
+<div class="row">
+    <div class="col-1">
+        <label class="form-label">City</label>
+    </div>
+    <div class="col-4">
+        <input #locationInput type="text" class="form-control">
+    </div>
+    <div class="col-1">
+        <button (click)="addCountry(locationInput.value)" class="btn btn-primary">Add</button>
+    </div>
+</div>
+
+<br><br>
+
+<table class="table table-striped">
+    <tbody>
+        @for (location of locations; let index = $index; track location) {
+            <tr>
+                <td>
+                    <a>{{ location | titlecase }}</a>
+                </td>
+                <td>
+                    <button (click)="removeLocation(index)" class="btn btn-danger">Remove</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
