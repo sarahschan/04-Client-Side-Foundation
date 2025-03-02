@@ -1,0 +1,92 @@
+<h1>Weather Information</h1>
+
+<div class="row d-flex align-items-center justify-content-start">
+    <div class="col-auto">
+        <label class="form-label">City: </label>
+    </div>
+    <div class="col-4">
+        <input type="text" #cityInput class="form-control col-auto">
+    </div>
+    <div class="col-auto">
+        <button (click)="getWeather(cityInput.value)" class="btn btn-secondary">Get</button>
+    </div>
+    
+</div>
+
+@if (requestedCity) {
+
+    @if (!errorEncountered && weatherData) {
+        <div>
+            <h2>Weather details for {{ requestedCity | titlecase }}</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-2">Category</th> <!-- Make header narrower -->
+                        <th class="col-2">Label</th> <!-- Secondary header narrower -->
+                        <th class="col">Value</th> <!-- This will take up the remaining space -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Coordinates</th>
+                        <td>Lon</td>
+                        <td>{{ weatherData.coord.lon }}</td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td>Lat</td>
+                        <td>{{ weatherData.coord.lat }}</td>
+                    </tr>
+
+                    <tr>&nbsp;</tr>
+
+                    <tr>
+                        <th>Weather Details</th>
+                        <td>Description</td>
+                        <td>{{ weatherData.weather[0].description | titlecase }}</td>
+                    </tr>
+
+                    <tr>&nbsp;</tr>
+
+                    <tr>
+                        <th>Temperature</th>
+                        <td>Temperature</td>
+                        <td>{{ weatherData.main.temp }}</td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td>Min Temperature</td>
+                        <td>{{ weatherData.main.temp_min }}</td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td>Max Temperature</td>
+                        <td>{{ weatherData.main.temp_max }}</td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <td>Humidity</td>
+                        <td>{{ weatherData.main.humidity }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    } @else {
+        <div>
+            <h2>Error fetching weather details for {{ requestedCity | titlecase }}</h2>
+            <p>Error Message: {{ errorMsg | titlecase }}</p>
+
+        </div>
+    }
+
+} @else {
+    <div>
+        <p>No city has been selected</p>
+        
+    </div>
+}
+

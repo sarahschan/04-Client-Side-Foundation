@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { CurrentWeatherComponent } from './components/current-weather/current-weather.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { CurrentWeatherTextComponent } from './components/current-weather-text/current-weather-text.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CurrentWeatherComponent
+    CurrentWeatherComponent,
+    CurrentWeatherTextComponent
   ],
   imports: [
     BrowserModule,
