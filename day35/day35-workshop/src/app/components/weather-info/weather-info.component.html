@@ -1,1 +1,64 @@
-<p>weather-info works!</p>
+<h1>Weather Details for {{ location | titlecase }}</h1>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th class="col-2">Category</th>
+            <th class="col-2">Sub Category</th>
+            <th class="col">Value</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <th>Coordinates</th>
+            <td>Lon</td>
+            <td>{{ weatherData?.coord?.lon }}</td>
+            <!-- Alternatively wrap the whole table in an if block, this is just for reference -->
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>Lat</td>
+            <td>{{ weatherData?.coord?.lat }}</td>
+        </tr>
+
+        <tr>&nbsp;</tr>
+
+        <tr>
+            <th>Weather Details</th>
+            <td>Description</td>
+            <td>{{ weatherData?.weather?.[0]?.description | titlecase }}</td>
+        </tr>
+
+        <tr>&nbsp;</tr>
+
+        <tr>
+            <th>Temperature</th>
+            <td>Temperature</td>
+            <td>{{ weatherData?.main?.temp }}</td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>Min Temperature</td>
+            <td>{{ weatherData?.main?.temp_min }}</td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>Max Temperature</td>
+            <td>{{ weatherData?.main?.temp_max }}</td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>Humidity</td>
+            <td>{{ weatherData?.main?.humidity }}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+<button [routerLink]="['']" class="btn btn-secondary">Back to locations</button>

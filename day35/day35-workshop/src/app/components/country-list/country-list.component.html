@@ -19,7 +19,7 @@
         @for (location of locations; let index = $index; track location) {
             <tr>
                 <td>
-                    <a>{{ location | titlecase }}</a>
+                    <a [routerLink]="['/weather-info', location]">{{ location | titlecase }}</a>
                 </td>
                 <td>
                     <button (click)="removeLocation(index)" class="btn btn-danger">Remove</button>
