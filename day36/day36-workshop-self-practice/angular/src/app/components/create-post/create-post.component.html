@@ -1,0 +1,19 @@
+<h1>Create new post</h1>
+
+<form [formGroup]="postForm" (submit)="submitPost()">
+
+    <label>Upload an image</label>
+    <br>
+    <input type="file" accept="image/jpg, image/jpeg, image/png"
+        (change)="onImageSelected($event)">
+
+    <br><br>
+
+    <label>Comments</label>
+    <br>
+    <input type="text" placeholder="comments">
+
+    <br><br>
+    <button type="submit">Submit Post</button>
+
+</form>
