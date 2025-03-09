@@ -41,7 +41,8 @@ export class CreatePostComponent implements OnInit {
       return
     }
 
-    const comments = this.postForm.value
+    const comments = this.postForm.get("comments")?.value || ""
+
     this.postService.submitPost(comments, this.selectedFile)
       .then(
         (result) => {

@@ -25,6 +25,8 @@ public class PostController {
         
         String postId = "";
 
+        System.out.println(comments);
+
         try {
             
             postId = postService.insertNewPost(imageFile, comments);
