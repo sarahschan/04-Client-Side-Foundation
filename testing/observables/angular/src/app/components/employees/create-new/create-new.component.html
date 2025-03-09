@@ -1,0 +1,17 @@
+<h2>Add New Employee</h2>
+
+<form [formGroup]="addEmployeeForm" (submit)="submitEmployee()">
+  
+    <label>Name</label>
+    <input formControlName="name" type="text">
+  
+    <br>
+
+    <label>Email</label>
+    <input formControlName="email" type="text">
+
+    <br>
+  
+    <button type="submit">Submit</button>
+  
+</form>

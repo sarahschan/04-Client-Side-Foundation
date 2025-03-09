@@ -1,0 +1,27 @@
+<h2>Employees List</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (employee of employeesList; let idx = $index; track employee) {
+            <tr>
+                <td>{{ employee.empId }}</td>
+                <td>{{ employee.name | titlecase }}</td>
+                <td>{{ employee.email }}</td>
+            </tr>
+        
+        } @empty {
+            <tr>
+                <td colspan="3" class="text-center">No employees to display</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
