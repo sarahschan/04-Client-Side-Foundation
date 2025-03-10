@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, inject } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LineItem} from '../models';
+import {LineItem} from '../../models';
 
 @Component({
   selector: 'app-order-form',
