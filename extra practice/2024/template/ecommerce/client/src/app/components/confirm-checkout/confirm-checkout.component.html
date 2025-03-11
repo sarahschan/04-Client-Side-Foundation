@@ -1,35 +1,35 @@
 <h2>Checkout</h2>
 
-<form>
+<form [formGroup]="orderForm" (submit)="submitOrder()">
   <table>
     <tr>
       <td>Name: </td>
       <td>
-        <input type="text" size="30">
+        <input formControlName="name" type="text" size="30">
       </td>
     </tr>
     <tr>
       <td>Address: </td>
       <td>
-        <input type="text" size="30">
+        <input formControlName="address" type="text" size="30">
       </td>
     </tr>
     <tr>
       <td>Priority: </td>
       <td>
-        <input type="checkbox">
+        <input formControlName="priority" type="checkbox">
       </td>
     </tr>
     <tr>
       <td>Comments: </td>
       <td>
-        <textarea cols="30" rows="4"></textarea>
+        <textarea formControlName="comments" cols="30" rows="4"></textarea>
       </td>
     </tr>
     <tr>
       <td></td>
       <td>
-        <button type="submit">Place Order</button>
+        <button type="submit" [disabled]="isFormInvalid()">Place Order</button>
       </td>
     </tr>
   </table>

@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CartStore } from '../../cart.store';
 import { Subscription } from 'rxjs';
 import { LineItem } from '../../models';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-confirm-checkout',
@@ -18,6 +18,10 @@ export class ConfirmCheckoutComponent implements OnInit, OnDestroy {
   protected cartItems!: LineItem[]
   private cartTotalSubscription$!: Subscription
   protected totalPrice!: number
+
+
+  private formBuilder = inject(FormBuilder)
+  protected orderForm!: FormGroup
 
   ngOnInit(): void {
     
@@ -38,6 +42,28 @@ export class ConfirmCheckoutComponent implements OnInit, OnDestroy {
     console.info("Total price: ", this.totalPrice)
 
 
+    // create the order form
+    this.orderForm = this.createOrderForm()
+
+  }
+
+  submitOrder(): void {
+    console.info('Recieved order details: ', this.orderForm.value)
+  }
+
+
+  private createOrderForm(): FormGroup {
+    return this.formBuilder.group({
+      name: this.formBuilder.control<string>('', [ Validators.required ]),
+      address: this.formBuilder.control<string>('', [ Validators.required, Validators.minLength(3)]),
+      priority: this.formBuilder.control<boolean>(false),
+      comments: this.formBuilder.control<string>('')
+    })
+  }
+
+
+  protected isFormInvalid() {
+    return this.orderForm.invalid
   }
 
   ngOnDestroy(): void {
