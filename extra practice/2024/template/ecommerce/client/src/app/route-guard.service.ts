@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterState
 import { CartStore } from './cart.store';
 import { map, Observable, Subscription, take } from 'rxjs';
 
+// IDK WHY THIS WAS WHAT WAS RECOMMENDED BY ANGULAR BUT THEN IT SAYS DEPRECIATED????
 // @Injectable({
 //   providedIn: 'root'
 // })
