@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import { CartStore } from './cart.store';
@@ -8,7 +8,7 @@ import { CartStore } from './cart.store';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   // NOTE: you are free to modify this component
 
@@ -28,5 +28,8 @@ export class AppComponent implements OnInit {
     this.router.navigate([ '/checkout' ])
   }
 
+  ngOnDestroy(): void {
+    this.itemCount$.unsubscribe()
+  }
 
 }
