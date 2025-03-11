@@ -85,6 +85,13 @@ export class CartStore {
 
     }
 
+
+    clearCart() {
+        const clearedCart: LineItem[] = []
+        this.cartItemsSubject.next(clearedCart)
+
+        console.info('Cleared cart: ', this.cartItemsSubject.getValue())
+    }
 }
 
 

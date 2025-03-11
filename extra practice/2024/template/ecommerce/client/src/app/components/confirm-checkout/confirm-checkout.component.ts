@@ -70,6 +70,7 @@ export class ConfirmCheckoutComponent implements OnInit, OnDestroy {
         // success alert and navigate to 0
         alert(`Order successfully placed: Order ID ${response.orderId}`)
         this.router.navigate([''])
+        this.cartStore.clearCart()
         
       },
       error: (error) => {
