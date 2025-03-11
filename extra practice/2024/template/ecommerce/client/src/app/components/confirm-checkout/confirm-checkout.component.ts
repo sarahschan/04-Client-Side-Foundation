@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { LineItem, Order } from '../../models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm-checkout',
@@ -25,6 +26,8 @@ export class ConfirmCheckoutComponent implements OnInit, OnDestroy {
   protected orderForm!: FormGroup
 
   private productService = inject(ProductService)
+
+  private router = inject(Router)
 
   ngOnInit(): void {
     
@@ -63,10 +66,18 @@ export class ConfirmCheckoutComponent implements OnInit, OnDestroy {
       next: (response) => {
         
         console.log('>>> Order sent and saved: ', response.orderId)
+
+        // success alert and navigate to 0
+        alert(`Order successfully placed: Order ID ${response.orderId}`)
+        this.router.navigate([''])
         
       },
       error: (error) => {
-        console.error('>>> Error sending order: ', error.error.error)
+
+        console.error('>>> Error sending order: ', error.error.message)
+
+        // error alert and stay
+        alert(`Error placing order: ${error.error.message}`)
       }
 
     })

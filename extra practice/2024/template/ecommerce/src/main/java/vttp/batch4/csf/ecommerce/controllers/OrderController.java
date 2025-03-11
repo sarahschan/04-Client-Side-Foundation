@@ -51,7 +51,7 @@ public class OrderController {
       e.printStackTrace();
 
       JsonObject response = Json.createObjectBuilder()
-        .add("error", e.getMessage())
+        .add("message", e.getMessage())
         .build();
 
       return ResponseEntity.status(500).body(response.toString());
