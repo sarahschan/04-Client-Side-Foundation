@@ -24,6 +24,10 @@ export class AppComponent implements OnInit, OnDestroy {
     )
   }
 
+  invalidCheckout(): boolean {
+    return this.itemCount <= 0
+  }
+
   checkout(): void {
     this.router.navigate([ '/checkout' ])
   }
