@@ -1,12 +1,23 @@
 package vttp.batch4.csf.ecommerce;
 
 
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.Document;
+import org.springframework.stereotype.Component;
 
 import jakarta.json.Json;
+import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonValue;
+import vttp.batch4.csf.ecommerce.models.Cart;
+import vttp.batch4.csf.ecommerce.models.LineItem;
+import vttp.batch4.csf.ecommerce.models.Order;
 import vttp.batch4.csf.ecommerce.models.Product;
 
+@Component
 public class Utils {
 
   // IMPORTANT: DO NOT MODIFY THIS METHOD.
@@ -37,5 +48,56 @@ public class Utils {
       .add("image", product.getImage())
       .add("quantity", product.getQuantity())
       .build();
+  }
+
+
+  public Order toOrder(String jsonOrderString) {
+    
+    // { "name":"sarah",
+    //   "address":"123 bedrock",
+    //   "priority":false,
+    //   "comments":"",
+    //   "cart": { 
+    //     "lineItems":[
+    //       { "prodId":"67ce9ff53b6f736edf551a79",
+    //         "quantity":1,
+    //         "name":"Glow Assorted Loose Leaf Tea",
+    //         "price":1995
+    //       },
+    //       { "prodId":"67ce9ff53b6f736edf551466",
+    //         "quantity":1,
+    //         "name":"Masters Blend Tea- Rich Taste",
+    //         "price":1500
+    //       }
+    //   }
+    // }
+
+    JsonObject orderJObject = Json.createReader(new StringReader(jsonOrderString)).readObject();
+
+    JsonArray lineItemsJArray = orderJObject.getJsonObject("cart").getJsonArray("lineItems");
+
+    Cart cart = new Cart();
+
+    for (JsonValue lineItemJValue : lineItemsJArray) {
+      
+      JsonObject lineItemJObject = lineItemJValue.asJsonObject();
+
+      LineItem lineItem = new LineItem();
+        lineItem.setProductId(lineItemJObject.getString("prodId"));
+        lineItem.setName(lineItemJObject.getString("name"));
+        lineItem.setQuantity(lineItemJObject.getInt("quantity"));
+        lineItem.setPrice((float) lineItemJObject.getJsonNumber("price").doubleValue());
+    
+      cart.addLineItem(lineItem);
+    }
+
+    Order o = new Order();
+      o.setName(orderJObject.getString("name"));
+      o.setAddress(orderJObject.getString("address"));
+      o.setPriority(orderJObject.getBoolean("priority"));
+      o.setComments(orderJObject.getString("comments"));
+      o.setCart(cart);
+
+    return o;
   }
 }

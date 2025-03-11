@@ -1,8 +1,9 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CartStore } from '../../cart.store';
 import { Subscription } from 'rxjs';
-import { LineItem } from '../../models';
+import { LineItem, Order } from '../../models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductService } from '../../product.service';
 
 @Component({
   selector: 'app-confirm-checkout',
@@ -22,6 +23,8 @@ export class ConfirmCheckoutComponent implements OnInit, OnDestroy {
 
   private formBuilder = inject(FormBuilder)
   protected orderForm!: FormGroup
+
+  private productService = inject(ProductService)
 
   ngOnInit(): void {
     
@@ -48,7 +51,26 @@ export class ConfirmCheckoutComponent implements OnInit, OnDestroy {
   }
 
   submitOrder(): void {
+    
     console.info('Recieved order details: ', this.orderForm.value)
+    
+    const newOrder: Order = this.orderForm.value
+      newOrder.cart = { lineItems: this.cartItems }
+
+    console.info(newOrder)
+
+    this.productService.checkout(newOrder).subscribe({
+      next: (response) => {
+        
+        console.log('>>> Order sent and saved: ', response.orderId)
+        
+      },
+      error: (error) => {
+        console.error('>>> Error sending order: ', error.error.error)
+      }
+
+    })
+
   }
 
 

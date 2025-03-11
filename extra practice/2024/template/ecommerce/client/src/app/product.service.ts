@@ -27,6 +27,6 @@ export class ProductService {
   // If this method is changed, any assessment task relying on this method will
   // not be marked
   checkout(order: Order) {
-    // TODO Task 3
+    return this.http.post<{orderId: string}>(`/api/order`, order)
   }
 }

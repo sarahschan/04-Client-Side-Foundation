@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
-import {Router} from '@angular/router';
+import { Subscription} from 'rxjs';
+import { Router} from '@angular/router';
 import { CartStore } from './cart.store';
 
 @Component({
