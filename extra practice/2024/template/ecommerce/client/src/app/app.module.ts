@@ -12,6 +12,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-checkout.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CartStore } from './cart.store';
 
 // NOTE: you are free to modify this file
 
