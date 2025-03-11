@@ -19,8 +19,8 @@ export class AppComponent implements OnInit, OnDestroy {
   itemCount$!: Subscription
 
   ngOnInit(): void {
-    this.itemCount$ = this.cartStore.numProdductsInCart$.subscribe(
-      (numProductsInCart) => this.itemCount = numProductsInCart
+    this.itemCount$ = this.cartStore.numProductsInCart$.subscribe(
+      (numProuctsInCart) => this.itemCount = numProuctsInCart
     )
   }
 

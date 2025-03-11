@@ -46,15 +46,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td> Apple </td>
-      <td> 0.5 </td>
-      <td> 6 </td>
-    </tr>
+    @for (item of cartItems; let idx = $index; track item) {
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>₹{{ item.price }}</td>
+        <td>{{ item.quantity }}</td>
+      </tr>
+    }
   </tbody>
   <tfoot>
     <td></td>
     <td>Total: </td>
-    <td> 100 </td>
+    <td>₹{{ totalPrice }}</td>
   </tfoot>
 </table>
