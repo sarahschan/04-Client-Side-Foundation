@@ -1,0 +1,21 @@
+<p>task works!</p>
+
+<form [formGroup]="taskForm" (submit)="processForm()">
+
+    <div>
+        <label>Task Name</label>
+        <input formControlName="name" type="text">
+    </div>
+
+    <div>
+        <label>Priority</label>
+        <select formControlName="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+
+    <button type="submit">Submit Task</button>
+
+</form>

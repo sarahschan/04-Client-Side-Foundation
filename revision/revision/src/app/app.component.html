@@ -1,0 +1,33 @@
+<h2>Cart {{ itemCount$ | async }}</h2>
+
+<form [formGroup]="form" (submit)="processForm()">
+  <table>
+    <tr>
+      <td>Item:</td>
+      <td>
+        <input formControlName="item" type="text">
+      </td>
+    </tr>
+
+    <tr>
+      <td>Price:</td>
+      <td>
+        <input formControlName="price" type="number">
+      </td>
+    </tr>
+  </table>
+
+  <button type="submit">Add To Cart Store</button>
+</form>
+
+
+@for (i of items$ | async; track i.item) {
+  <div>
+    {{ i.item | uppercase }}
+    <button (click)="deleteFromCart(i.item)">Delete from cart</button>
+  </div>
+}
+
+@empty {
+  <h3>Your cart is empty</h3>
+}

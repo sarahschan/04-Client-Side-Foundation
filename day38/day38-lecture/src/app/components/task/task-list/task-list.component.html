@@ -1,0 +1,18 @@
+<h2>List of Tasks:</h2>
+
+<label>Filter</label>
+<select (change)="filterByPriority($event)">
+    <option value="all">All</option>
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+</select>
+
+@for (task of tasks$ | async; track task.id) {
+    <div style="border: 2px solid darkgrey; padding-left: 20px;">
+        <h3>{{ task.name }}</h3>
+        <p>Task ID : {{ task.id }}</p>
+        <p>Priority: {{ task.priority }}</p>
+        <button type="button" (click)="deleteTask(task.id)">Delete {{task.id}}</button>
+    </div>
+}
